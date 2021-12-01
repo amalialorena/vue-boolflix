@@ -2,7 +2,6 @@
   <div id="app">
     <Nav/>
     <Movies/>
-    <h1>Ciao</h1>
   </div>
 </template>
 
