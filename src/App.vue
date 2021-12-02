@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Search @info="getMovies" />
-    <Movies :data="moviesArray" />
+    <Movies :data="moviesArray"/>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
   },
 
   computed: {
+  
     apiUrl: function () {
       return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
     },
@@ -41,10 +42,8 @@ export default {
       return "&query=" + item;
     },
     getMovies(query) {
-      console.log('get movies', {query});
       axios.get(this.apiUrl + query).then((result) => { 
         this.moviesArray = result.data.results;
-         console.log('got movies', this.moviesArray);
       });
     },
   },

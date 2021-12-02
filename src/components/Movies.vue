@@ -1,7 +1,12 @@
 <template>
   <div class="hello">
-     <ul>
-      <li v-for="(movie, i) in data" :key="i">{{movie.title}} {{movie.original_title}} {{movie.original_language}} {{movie.vote_average}}</li>
+     <ul v-for="(movie, i) in data" :key="i">
+      <li >{{movie.title}}</li>
+      <li>{{movie.original_title}}</li>
+      <li v-if="movie.original_language ==='it'">italian</li>
+      <li v-else-if="movie.original_language ==='en'">english</li>
+      <li v-else>other</li>
+      <li>{{movie.vote_average}}</li>
     </ul>
   </div>
 </template>
