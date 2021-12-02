@@ -30,6 +30,9 @@ export default {
       console.log(this.userMovie)
       return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
     },
+    apiForSeries: function () {
+      return `https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`
+    }
   },
 
   created: function () {},
@@ -42,6 +45,10 @@ export default {
       this.userMovie = query;
       axios.get(this.apiUrl).then((result) => { 
         this.moviesArray = result.data.results;
+      });
+      axios.get(this.apiForSeries).then((result) => { 
+        this.moviesArray = result.data.results;
+        console.log(this.moviesArray)
       });
     },
   },

@@ -2,8 +2,8 @@
   <section>
     <div class="wrapper" v-if="data">
      <ul v-for="(movie, i) in data" :key="i">
-      <li >{{movie.title}}</li>
-      <li>{{movie.original_title}}</li>
+      <li >{{movie.title}}{{movie.name}}</li>
+      <li>{{movie.original_title}}{{movie.original_name}}</li>
       <li v-if="movie.original_language ==='it'">
           <div class="flag"><img src="../assets/img/italy.png" alt=""></div>
       </li>
