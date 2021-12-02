@@ -27,6 +27,7 @@ export default {
   computed: {
   
     apiUrl: function () {
+      console.log(this.userMovie)
       return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
     },
   },
@@ -42,7 +43,8 @@ export default {
       return "&query=" + item;
     },
     getMovies(query) {
-      axios.get(this.apiUrl + query).then((result) => { 
+      this.userMovie = query;
+      axios.get(this.apiUrl).then((result) => { 
         this.moviesArray = result.data.results;
       });
     },
@@ -59,6 +61,6 @@ export default {
 * {
    margin: 0;
    padding: 0;
-   box-sizing: border-box;
+   box-sizing:border-box;
 }
 </style>
