@@ -35,10 +35,6 @@ export default {
   created: function () {},
   
   methods: {
-    inputData(input) {
-      this.userMovie = input;
-      this.getMovies()
-    },
     createQuery(item) {
       return "&query=" + item;
     },
