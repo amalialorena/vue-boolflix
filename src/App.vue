@@ -1,21 +1,54 @@
 <template>
   <div id="app">
-    <Nav/>
-    <Movies/>
+    <Search @info="getMovies" />
+    <Movies :data="moviesArray" />
   </div>
 </template>
 
 <script>
-import Nav from './components/Nav.vue';
-import Movies from './components/Movies.vue'
+import Search from "./components/Search.vue";
+import Movies from "./components/Movies.vue";
+import axios from "axios";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Nav,
-    Movies
-  }
-}
+    Search,
+    Movies,
+  },
+
+  data() {
+    return {
+      userMovie: "",
+      moviesArray: [],
+    };
+  },
+
+  computed: {
+    query: function () {
+      return "&query=" + this.userMovie;
+    },
+    apiUrl: function () {
+      return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09${this.query}`;
+    },
+  },
+
+  created: function () {},
+  
+  methods: {
+    inputData(input) {
+      this.userMovie = input;
+      this.getMovies()
+    },
+    getMovies(query) {
+      console.log('get movies', {query});
+      axios.get(this.apiUrl + query).then((result) => { 
+        this.moviesArray = result.data.results;
+         console.log('got movies', this.moviesArray);
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss">

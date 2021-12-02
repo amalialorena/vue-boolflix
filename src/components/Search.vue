@@ -1,14 +1,21 @@
 <template>
   <div class="hello">
-      
+    <input type="text" v-model="userMovie">
+    <button @click.prevent="$emit('info', userMovie)">Search</button>
+  
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Nav',
+  name: 'Search',
   props: {
-   
+    
+  },
+  data () {
+    return {
+      userMovie: "",
+    }
   }
 }
 </script>
