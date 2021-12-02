@@ -25,11 +25,8 @@ export default {
   },
 
   computed: {
-    query: function () {
-      return "&query=" + this.userMovie;
-    },
     apiUrl: function () {
-      return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09${this.query}`;
+      return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
     },
   },
 
@@ -39,6 +36,9 @@ export default {
     inputData(input) {
       this.userMovie = input;
       this.getMovies()
+    },
+    createQuery(item) {
+      return "&query=" + item;
     },
     getMovies(query) {
       console.log('get movies', {query});
