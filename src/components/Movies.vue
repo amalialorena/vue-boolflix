@@ -1,60 +1,44 @@
 <template>
   <section>
-    <div class="wrapper" v-if="data">
+    <div class="wrapper">
      <ul v-for="(movie, i) in data" :key="i">
+      <li><img :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" alt="movie poster"></li>
       <li >{{movie.title}}{{movie.name}}</li>
       <li>{{movie.original_title}}{{movie.original_name}}</li>
-      <li v-if="movie.original_language ==='it'">
-          <div class="flag"><img src="../assets/img/italy.png" alt=""></div>
-      </li>
-      <li v-else-if="movie.original_language ==='en'">
-        <div class="flag"><img src="../assets/img/united-states-of-america.png" alt=""></div>
-      </li>
-      <li v-else-if="movie.original_language ==='de'">
-        <div class="flag"><img src="../assets/img/germany.png" alt=""></div>
-      </li>
-      <li v-else class="flag">
-        <div class="flag"><img src="../assets/img/rainbow-flag.png" alt=""></div>
-      </li>
-      <li>{{movie.vote_average}}</li>
+      <li><Flag :language="movie.original_language" /></li>
+      <li>{{movie.vote_average}}</li>     
     </ul>
   </div>
-  <div v-else>
-    <h3>search a movie</h3>
-  </div>
-  
   </section>
-  
+
 </template>
 
 <script>
+import Flag from "./Flag.vue";
+
 export default {
   name: 'Movies',
+  components: {
+    Flag,
+  },
   props: {
    data: Array,
   },
-
-  data () {
-    const movieSearch = "harry+potter";
-      return {
-          movieSearch,
-      };
+  data: function () {
+    return {
+      language: 'it',
+    }
   },
-
+  computed: {
+    movieLanguage: function() {
+      return this.language;
+    }
+ 
+  }
+  
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  section {
-   .flag {
-     width: 50px;
-     height: 40px;
-     img {
-       height: 100%;
-     }
-   }
-
-  }
-
 </style>
