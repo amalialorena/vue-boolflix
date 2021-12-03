@@ -8,7 +8,7 @@
       <li><Flag :language="movie.original_language" /></li>
       <li>original vote {{movie.vote_average}}</li>
       <li class="stars">
-          <div class="star" v-for="(star, i) in stars(movie.vote_average)" :key="i"></div>
+          <div class="star" v-for="i in generateStars(movie.vote_average)" :key="i"></div>
       </li>     
     </ul>
   </div>
@@ -39,15 +39,10 @@ export default {
    
   },
   methods: {
-     stars: function(vote) {
-      let stars = [];
-      let star = "";
+     generateStars: function(vote) {
       let divideVote = vote / 2 ;
       let roundNum = (Math.round(divideVote));
-      for(let i = 0; i < roundNum; i ++) {
-        stars.push(star)
-      }
-      return stars
+      return roundNum
     }
   }
   
