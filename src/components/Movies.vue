@@ -8,7 +8,7 @@
       <li v-else>
         <img  :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" alt="movie poster"> 
       </li>
-      <li >{{movie.title}}{{movie.name}}</li>
+      <Title :movieTitle="movie.title" :tvTitle="movie.name"/>
       <li>{{movie.original_title}}{{movie.original_name}}</li>
       <li><Flag :language="movie.original_language" /></li>
       <li>original vote {{movie.vote_average}}</li>
@@ -24,11 +24,13 @@
 
 <script>
 import Flag from "./Flag.vue";
+import Title from "./Title.vue";
 
 export default {
   name: 'Movies',
   components: {
     Flag,
+    Title,
   },
   props: {
    data: Array,
