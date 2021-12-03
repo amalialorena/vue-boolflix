@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <Search @info="getMovies" />
+    <CardContainer/>
     <Movies :data="moviesArray"/>
   </div>
 </template>
 
 <script>
 import Search from "./components/Search.vue";
+import CardContainer from "./components/CardContainer.vue";
 import Movies from "./components/Movies.vue";
 import axios from "axios";
 
@@ -14,6 +16,7 @@ export default {
   name: "App",
   components: {
     Search,
+    CardContainer,
     Movies,
   },
 

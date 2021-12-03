@@ -1,9 +1,9 @@
 <template>
   <nav>
     <h1>BOOLFLIX</h1>
-    <div class="search-container">
-       <input type="text" v-model="userMovie">
-       <button @click.prevent="$emit('info', userMovie)">Search</button>
+    <div>
+      <input type="text" v-model="userMovie">
+      <button @click.prevent="$emit('info', userMovie)">Search</button>
     </div>
   </nav>
 </template>
@@ -25,11 +25,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   nav {
-    height: 80px;
-    background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
+    background-color: black;
     h1 {
       color: red;
     }
