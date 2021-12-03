@@ -9,7 +9,7 @@
         <img  :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" alt="movie poster"> 
       </li>
       <Title :movieTitle="movie.title" :tvTitle="movie.name"/>
-      <li>{{movie.original_title}}{{movie.original_name}}</li>
+      <OriginalTitle :movieTitle="movie.original_title" :tvTitle="movie.original_name"/>
       <li><Flag :language="movie.original_language" /></li>
       <li>original vote {{movie.vote_average}}</li>
       <li class="stars">
@@ -25,12 +25,14 @@
 <script>
 import Flag from "./Flag.vue";
 import Title from "./Title.vue";
+import OriginalTitle from "./OriginalTitle.vue";
 
 export default {
   name: 'Movies',
   components: {
     Flag,
     Title,
+    OriginalTitle,
   },
   props: {
    data: Array,

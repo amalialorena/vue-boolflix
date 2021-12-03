@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>{{movieTitle}}</h1>
-        <h1>{{tvTitle}}</h1>
+        <p>{{movieTitle}}</p>
+        <p>{{tvTitle}}</p>
     </div>
 </template>
 

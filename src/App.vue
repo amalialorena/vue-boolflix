@@ -28,7 +28,7 @@ export default {
   computed: {
   
     apiUrl: function () {
-      return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09${this.createQuery(this.userMovie)}`;
+      return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
     },
     apiForSeries: function () {
       return `https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`
