@@ -8,7 +8,8 @@
       <li><Flag :language="movie.original_language" /></li>
       <li>original vote {{movie.vote_average}}</li>
       <li class="stars">
-          <div class="star" v-for="i in generateStars(movie.vote_average)" :key="i"></div>
+          <div class="star filled-star" v-for="i in generateStars(movie.vote_average)" :key="i"><i class="fas fa-star"></i></div>
+          <div class="star hollow-star" v-for="i in generateHollowStars()" :key="i"><i class="fas fa-star"></i></div>
       </li>     
     </ul>
   </div>
@@ -30,6 +31,7 @@ export default {
   data: function () {
     return {
       language: 'it',
+      roundNum: null,
     }
   },
   computed: {
@@ -41,11 +43,15 @@ export default {
   methods: {
      generateStars: function(vote) {
       let divideVote = vote / 2 ;
-      let roundNum = (Math.round(divideVote));
-      return roundNum
+      this.roundNum = (Math.round(divideVote));
+      return this.roundNum
+    },
+    generateHollowStars: function() {
+      let hollowStars = 5 - this.roundNum;
+      console.log(hollowStars);
+      return hollowStars
     }
   }
-  
 };
 </script>
 
@@ -54,12 +60,16 @@ export default {
 .stars {
   display: flex;
   .star {
-    height: 20px;
-    width: 20px;
-    background-color: red;
-    border: 1px solid black;
+    i {
+      text-shadow: 0 0 1px #745f03;
+    }  
   }
-
+  .filled-star i {
+       color:rgb(255, 208, 0);
+     }
+  .hollow-star i {
+       color: rgb(201, 199, 199);
+     }
 }
   
 </style>
