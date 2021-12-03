@@ -27,7 +27,6 @@ export default {
   computed: {
   
     apiUrl: function () {
-      console.log(this.userMovie)
       return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09${this.createQuery(this.userMovie)}`;
     },
     apiForSeries: function () {
@@ -48,7 +47,6 @@ export default {
       });
       axios.get(this.apiForSeries).then((result) => { 
         this.moviesArray = result.data.results;
-        console.log(this.moviesArray)
       });
     },
   },
