@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="stars">
-      <div class="star filled-star" v-for="star, i in numberOfStars" :key="i">
+      <div class="star filled-star" v-for="star, i in numberOfStars" :key="`${i}-filled`">
         <i class="fas fa-star"></i>
       </div>
-      <!-- <div class="star hollow-star" v-for="hollowStar, j in generateHollowStars" :key="j">
+      <div class="star hollow-star" v-for="hollowStar, j in hollowStars" :key="`${j}-hollow`">
         <i class="fas fa-star"></i>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
       return divideVote;
     },
 
-    generateHollowStars: function () {
+    hollowStars: function () {
       let hollowStars = 5 - this.numberOfStars;
       return hollowStars;
     },

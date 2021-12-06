@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="poster-container">
     <div v-if="poster == null">
       <img src="../assets/img/italy.png" />
     </div>
@@ -23,4 +23,9 @@ export default {
 
 
 <style scoped lang="scss">
+  .poster-container {
+    img {
+      width: 100%;
+    }
+  }
 </style>
