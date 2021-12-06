@@ -16,7 +16,7 @@
 export default {
   name: "Poster",
   props: {
-      poster: String,
+    poster: String,
   },
 };
 </script>
