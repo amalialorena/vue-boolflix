@@ -2,15 +2,10 @@
   <section>
     <div class="wrapper">
      <ul v-for="(movie, i) in data" :key="i">
-      <li  v-if="movie.poster_path == null">
-        <img src="../assets/img/italy.png">
-      </li >
-      <li v-else>
-        <img  :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" alt="movie poster"> 
-      </li>
+      <Poster :poster="movie.poster_path"/>
       <Title :movieTitle="movie.title" :tvTitle="movie.name"/>
       <OriginalTitle :movieTitle="movie.original_title" :tvTitle="movie.original_name"/>
-      <li><Flag :language="movie.original_language" /></li>
+      <Flag :language="movie.original_language" />
       <li>original vote {{movie.vote_average}}</li>
       <li class="stars">
           <div class="star filled-star" v-for="i in generateStars(movie.vote_average)" :key="i"><i class="fas fa-star"></i></div>
@@ -26,11 +21,13 @@
 import Flag from "./Flag.vue";
 import Title from "./Title.vue";
 import OriginalTitle from "./OriginalTitle.vue";
+import Poster from "./Poster.vue";
 
 export default {
   name: 'Movies',
   components: {
     Flag,
+    Poster,
     Title,
     OriginalTitle,
   },
