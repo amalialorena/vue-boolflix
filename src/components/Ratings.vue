@@ -4,9 +4,9 @@
       <div class="star filled-star" v-for="star, i in numberOfStars" :key="i">
         <i class="fas fa-star"></i>
       </div>
-      <div class="star hollow-star" v-for="hollowStar, j in generateHollowStars" :key="j">
+      <!-- <div class="star hollow-star" v-for="hollowStar, j in generateHollowStars" :key="j">
         <i class="fas fa-star"></i>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

@@ -6,7 +6,8 @@
       <Title :movieTitle="movie.title" :tvTitle="movie.name"/>
       <OriginalTitle :movieTitle="movie.original_title" :tvTitle="movie.original_name"/>
       <Flag :language="movie.original_language" />
-      <Ratings :vote="movie.vote_average"/>    
+      <Ratings :vote="movie.vote_average"/> 
+      <Overview :summary="movie.overview"/>   
     </div>
   </div>
   </section>
@@ -19,6 +20,7 @@ import Title from "./Title.vue";
 import OriginalTitle from "./OriginalTitle.vue";
 import Poster from "./Poster.vue";
 import Ratings from "./Ratings.vue";
+import Overview from "./Overview.vue";
 
 export default {
   name: 'Movies',
@@ -27,7 +29,8 @@ export default {
     Poster,
     Title,
     OriginalTitle,
-    Ratings
+    Ratings,
+    Overview
   },
   props: {
    data: Array,
