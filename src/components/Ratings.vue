@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="stars">
+      <p><strong>Voto:</strong></p>
       <div class="star filled-star" v-for="star, i in numberOfStars" :key="`${i}-filled`">
         <i class="fas fa-star"></i>
       </div>
@@ -17,24 +18,17 @@ export default {
   props: {
     vote: Number,
   },
-
-  data: function () {
-    return {};
-  },
-
   computed: {
     numberOfStars: function () {
       let divideVote = Math.round(this.vote / 2);
       return divideVote;
     },
-
     hollowStars: function () {
       let hollowStars = 5 - this.numberOfStars;
       return hollowStars;
     },
   },
 }
-
 </script>
 
 <style scoped lang="scss">

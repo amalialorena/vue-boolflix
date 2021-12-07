@@ -1,7 +1,7 @@
 <template>
     <div>
-        <p>{{movieTitle}}</p>
-        <p>{{tvTitle}}</p>
+        <p v-if="movieTitle"><strong>Titolo: </strong>{{movieTitle}}</p>
+        <p v-if="tvTitle"><strong>Titolo: </strong>{{tvTitle}}</p>
     </div>
 </template>
 
@@ -14,10 +14,5 @@ export default {
         tvTitle: String
     }
 }
-
-
 </script>
 
-<style scoped lang="scss">
-
-</style>

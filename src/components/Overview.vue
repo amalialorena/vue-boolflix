@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <p>{{summary}}</p>
+    <div class="review-text" v-if="summary">
+        <p><strong>Overview:</strong>{{summary}}</p>
     </div>
 </template>
 
@@ -12,3 +12,7 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+
+</style>

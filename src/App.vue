@@ -8,7 +8,6 @@
 <script>
 import Search from "./components/Search.vue";
 import Movies from "./components/Movies.vue";
-
 import axios from "axios";
 
 export default {
@@ -17,16 +16,13 @@ export default {
     Search,
     Movies
   },
-
   data() {
     return {
       userMovie: "",
       moviesArray: [],
     };
   },
-
   computed: {
-  
     apiUrl: function () {
       return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
     },
@@ -34,9 +30,6 @@ export default {
       return `https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`
     }
   },
-
-  created: function () {},
-  
   methods: {
     createQuery(item) {
       return "&query=" + item;
@@ -64,5 +57,8 @@ export default {
    margin: 0;
    padding: 0;
    box-sizing:border-box;
+}
+body {
+  background-color: #101010
 }
 </style>
