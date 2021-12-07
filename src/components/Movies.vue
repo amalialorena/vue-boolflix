@@ -2,7 +2,7 @@
   <section>
     <div class="wrapper">
       <div class="card" v-for="(movie, i) in data" :key="i">
-          <Poster :poster="movie.poster_path"/>
+          <Poster :poster="movie.poster_path" :backdrop="movie.backdrop_path"/>
       <div class="info-card">
           <Title :movieTitle="movie.title" :tvTitle="movie.name"/>
           <OriginalTitle :movieTitle="movie.original_title" :tvTitle="movie.original_name"/>

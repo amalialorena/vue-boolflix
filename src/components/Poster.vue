@@ -1,14 +1,21 @@
 <template>
   <div class="poster-container">
-    <div class="poster" v-if="poster == null">
+    <div class="poster" v-if="poster == null && backdrop == null">
       <img src="../assets/img/netflix-natale.jpeg" />
     </div>
-    <div class="poster" v-else>
+    <div class="poster" v-else-if="poster">
       <img
         :src="`https://image.tmdb.org/t/p/w342/${poster}`"
         alt="movie poster"
       />
     </div>
+     <div class="poster" v-else-if="backdrop">
+      <img
+        :src="`https://image.tmdb.org/t/p/w342/${backdrop}`"
+        alt="movie poster"
+      />
+    </div>
+
   </div>
 </template>
 
@@ -17,6 +24,7 @@ export default {
   name: "Poster",
   props: {
     poster: String,
+    backdrop: String,
   },
 };
 </script>
