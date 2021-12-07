@@ -1,7 +1,7 @@
 <template>
   <div class="poster-container">
     <div class="poster" v-if="poster == null">
-      <img src="../assets/img/italy.png" />
+      <img src="../assets/img/netflix-natale.jpeg" />
     </div>
     <div class="poster" v-else>
       <img

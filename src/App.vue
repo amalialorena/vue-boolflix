@@ -59,6 +59,6 @@ export default {
    box-sizing:border-box;
 }
 body {
-  background-color: #101010
+  background-color: #1d1c1c
 }
 </style>
