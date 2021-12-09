@@ -20,29 +20,22 @@ export default {
     return {
       userMovie: "",
       moviesArray: [],
+      movieUrl:`https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it&query=`,
+      seriesUrl:`https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it&query=`
     };
   },
-  computed: {
-    apiUrl: function () {
-      return `https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`;
-    },
-    apiForSeries: function () {
-      return `https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it${this.createQuery(this.userMovie)}`
-    }
-  },
+ 
   methods: {
-    createQuery(item) {
-      return "&query=" + item;
-    },
     getMovies(query) {
       this.userMovie = query;
-      axios.get(this.apiUrl).then((result) => { 
+      axios.get(this.movieUrl+this.userMovie).then((result) => { 
         this.moviesArray = result.data.results;
       });
-      axios.get(this.apiForSeries).then((result) => { 
+      axios.get(this.seriesUrl+this.userMovie).then((result) => { 
         this.moviesArray = result.data.results;
       });
     },
+    
   },
 };
 </script>
@@ -59,6 +52,6 @@ export default {
    box-sizing:border-box;
 }
 body {
-  background-color: #1d1c1c
+  background-color: #101010
 }
 </style>
