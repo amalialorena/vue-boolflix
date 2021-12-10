@@ -2,7 +2,7 @@
   <nav>
     <h1>BOOLFLIX</h1>
     <div>
-      <input type="text" v-model="userMovie">
+      <input type="text" v-model="userMovie" v-on:keyup.enter="$emit('info', userMovie)">
       <button @click.prevent="$emit('info', userMovie)">Search</button>
     </div>
   </nav>

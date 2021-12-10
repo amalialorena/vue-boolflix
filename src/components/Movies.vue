@@ -13,7 +13,8 @@
           <Overview :summary="movie.overview" />
         </div>
       </div>
-      <h2>Trending now</h2>
+
+      <h2 v-if="trending">Trending now</h2>
       <div class="card" v-for="(movie, i) in trending" :key="i">
         <Poster :poster="movie.poster_path" :backdrop="movie.backdrop_path" />
         <div class="info-card">

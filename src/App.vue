@@ -2,7 +2,8 @@
   <div id="app">
     <Search @info="getMovies" />
     <h2>Popular movies</h2>
-    <Movies :data="moviesArray" :trending="trendingMovies"/>
+    <Movies :data="moviesArray" />
+    <Movies :trending="trendingMovies"/>
   </div>
 </template>
 
