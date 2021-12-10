@@ -2,17 +2,32 @@
   <section>
     <div class="wrapper">
       <div class="card" v-for="(movie, i) in data" :key="i">
-          <Poster :poster="movie.poster_path" :backdrop="movie.backdrop_path"/>
-      <div class="info-card">
-          <Title :movieTitle="movie.title" :tvTitle="movie.name"/>
-          <OriginalTitle :movieTitle="movie.original_title" :tvTitle="movie.original_name"/>
-          <Ratings :vote="movie.vote_average"/> 
-          <Overview :summary="movie.overview"/>   
+        <Poster :poster="movie.poster_path" :backdrop="movie.backdrop_path" />
+        <div class="info-card">
+          <Title :movieTitle="movie.title" :tvTitle="movie.name" />
+          <OriginalTitle
+            :movieTitle="movie.original_title"
+            :tvTitle="movie.original_name"
+          />
+          <Ratings :vote="movie.vote_average" />
+          <Overview :summary="movie.overview" />
+        </div>
+      </div>
+      <h2>Trending now</h2>
+      <div class="card" v-for="(movie, i) in trending" :key="i">
+        <Poster :poster="movie.poster_path" :backdrop="movie.backdrop_path" />
+        <div class="info-card">
+          <Title :movieTitle="movie.title" :tvTitle="movie.name" />
+          <OriginalTitle
+            :movieTitle="movie.original_title"
+            :tvTitle="movie.original_name"
+          />
+          <Ratings :vote="movie.vote_average" />
+          <Overview :summary="movie.overview" />
+        </div>
       </div>
     </div>
-  </div>
   </section>
-
 </template>
 
 <script>
@@ -23,62 +38,65 @@ import Ratings from "./Ratings.vue";
 import Overview from "./Overview.vue";
 
 export default {
-  name: 'Movies',
+  name: "Movies",
   components: {
     Poster,
     Title,
     OriginalTitle,
     Ratings,
-    Overview
+    Overview,
   },
   props: {
-   data: Array,
+    data: Array,
+    trending: Array,
   },
   data: function () {
     return {
-      language: 'it',
-    }
+      language: "it",
+    };
   },
   computed: {
-    movieLanguage: function() {
+    movieLanguage: function () {
       return this.language;
     },
   },
-  methods: {
-  }
+  methods: {},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    .card {
-      width: calc(100%/8) ;
-      margin: 10px;
-      position: relative;
-     
-    }
-    .info-card {
-      display: none;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      width:100%;
-      background-color: rgba(36, 34, 34, 0.959);
-      color: white;
-      font-size:.6em;
-      overflow: hidden;
-      padding: 5px;
-    }
-    .card:hover .card {
-      background-color: grey;
-    }
-    .card:hover .info-card {
-      display: block;
-    }
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  h2 {
+    color: white;
+    width: 100%;
   }
+  .card {
+    width: calc(100% / 8);
+    margin: 10px;
+    position: relative;
+  }
+  .info-card {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(36, 34, 34, 0.959);
+    color: white;
+    font-size: 0.6em;
+    overflow: hidden;
+    padding: 5px;
+  }
+  .card:hover .card {
+    background-color: grey;
+  }
+  .card:hover .info-card {
+    display: block;
+  }
+}
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Search @info="getMovies" />
-    <Movies :data="moviesArray"/>
+    <h2>Popular movies</h2>
+    <Movies :data="moviesArray" :trending="trendingMovies"/>
   </div>
 </template>
 
@@ -20,18 +21,26 @@ export default {
     return {
       userMovie: "",
       moviesArray: [],
+      trendingMovies: [],
       movieUrl:`https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it&query=`,
       seriesUrl:`https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it&query=`,
       popularUrl: `https://api.themoviedb.org/3/movie/popular?api_key=7008d934756b24d87143ba1e02bcbb09&language=en-US&page=1`,
+      trendingUrl:'https://api.themoviedb.org/3/trending/all/day?api_key=7008d934756b24d87143ba1e02bcbb09'
     };
   },
   created () {
     this.getPopular();
+    this.getTrending()
   },
   methods: {
     getPopular() {
       axios.get(this.popularUrl).then((result) => { 
         this.moviesArray = result.data.results;
+      });
+    },
+    getTrending() {
+      axios.get(this.trendingUrl).then((result) => {
+        this.trendingMovies = result.data.results
       });
     },
     getMovies(query) {
@@ -52,7 +61,10 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
+  h2 {
+    color: white;
+  } 
 }
 * {
    margin: 0;
@@ -62,4 +74,5 @@ export default {
 body {
   background-color: #101010
 }
+
 </style>
