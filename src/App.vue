@@ -1,9 +1,16 @@
 <template>
   <div id="app">
     <Search @info="getMovies" />
-    <h2>Popular movies</h2>
-    <Movies :data="moviesArray" />
-    <Movies :trending="trendingMovies"/>
+    <div v-if="moviesArray.length > 0">
+      <h2>{{userMovie}} results</h2>
+      <Movies :data="moviesArray" />
+    </div>
+    <div v-else>
+      <h2>Trending movies</h2>
+      <Movies :data="trendingMovies"/>
+      <h2>Popular movies</h2>
+      <Movies :data="popularMovies" />
+    </div>
   </div>
 </template>
 
@@ -22,6 +29,7 @@ export default {
     return {
       userMovie: "",
       moviesArray: [],
+      popularMovies: [],
       trendingMovies: [],
       movieUrl:`https://api.themoviedb.org/3/search/movie?api_key=7008d934756b24d87143ba1e02bcbb09&language=it&query=`,
       seriesUrl:`https://api.themoviedb.org/3/search/tv?api_key=7008d934756b24d87143ba1e02bcbb09&language=it&query=`,
@@ -36,7 +44,7 @@ export default {
   methods: {
     getPopular() {
       axios.get(this.popularUrl).then((result) => { 
-        this.moviesArray = result.data.results;
+        this.popularMovies = result.data.results;
       });
     },
     getTrending() {
