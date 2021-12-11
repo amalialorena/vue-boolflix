@@ -73,6 +73,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   h2 {
     color: white;
+    margin: 10px;
   } 
 }
 * {
