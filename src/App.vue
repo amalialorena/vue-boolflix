@@ -82,7 +82,7 @@ export default {
    box-sizing:border-box;
 }
 body {
-  background-color: red;
+  background-color: #101010;
 }
 
 </style>
